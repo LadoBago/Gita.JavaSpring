@@ -5,8 +5,8 @@ import beans.Student;
 import services.UniManagement;
 
 public class RemoveStudentFromCourseCommand extends Command {
-    private int studentId;
-    private String courseName;
+    private final int studentId;
+    private final String courseName;
 
     protected RemoveStudentFromCourseCommand(UniManagement uniManagement, int studentId, String courseName) {
         super(uniManagement);
@@ -15,6 +15,13 @@ public class RemoveStudentFromCourseCommand extends Command {
     }
 
     public static RemoveStudentFromCourseCommand create(UniManagement uniManagement, String...args){
+        if (uniManagement == null) {
+            throw new IllegalArgumentException("uniManagement == null");
+        }
+        if (args.length != 3) {
+            throw new IllegalArgumentException("Error: Expected two parameters");
+        }
+
         return new RemoveStudentFromCourseCommand (uniManagement, Integer.parseInt(args[1]), args[2]);
     }
 

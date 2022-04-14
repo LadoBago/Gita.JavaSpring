@@ -7,14 +7,14 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Course {
-    public final static int MAX_STUDENTS = 30;
+    public static final int MAX_STUDENTS = 30;
 
     public String getName() {
         return name;
     }
 
-    private String name;
-    private Student[] students;
+    private final String name;
+    private final Student[] students;
     private Lector assistant;
     private Lector lector;
     private int lastUsedStudentIndex;
@@ -39,7 +39,7 @@ public class Course {
             throw new IllegalArgumentException("parameter student is null");
         }
 
-        if (this.students.length == MAX_STUDENTS) {
+        if (lastUsedStudentIndex == MAX_STUDENTS) {
             throw new NoFreePlaceException(this);
         }
 
@@ -64,7 +64,7 @@ public class Course {
     }
 
     public boolean setAssistant(Lector assistant) {
-        if (this.assistant == assistant) {
+        if (this.assistant != null && this.assistant.equals(assistant)) {
             return false;
         }
 
@@ -73,7 +73,7 @@ public class Course {
     }
 
     public boolean setLector(Lector lector) {
-        if(this.lector == lector) {
+        if(this.lector != null && this.lector.equals(lector)) {
             return false;
         }
 
@@ -83,10 +83,9 @@ public class Course {
 
     public Student[] getStudents() {
         if (this.students == null)
-            return null;
+            return new Student[0];
 
-        Student[] res = Arrays.copyOfRange(this.students, 0, lastUsedStudentIndex);
-        return students;
+        return Arrays.copyOfRange(this.students, 0, lastUsedStudentIndex);
     }
 
     @Override

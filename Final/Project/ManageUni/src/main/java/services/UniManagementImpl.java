@@ -6,6 +6,7 @@ import exceptions.TooManyCoursesException;
 import helpers.ArrayHelper;
 import beans.*;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import static java.lang.System.out;
@@ -18,8 +19,8 @@ public class UniManagementImpl  implements UniManagement {
 
     private final Student[] students;
     private final Course[] courses;
-    private Lector[] assistants;
-    private Lector[] lectors;
+    private final Lector[] assistants;
+    private final Lector[] lectors;
 
     private int lastUsedStudentIndex;
     private int lastUsedCourseIndex;
@@ -275,7 +276,7 @@ public class UniManagementImpl  implements UniManagement {
     public Student getStudentById(int id) {
         Student res = null;
 
-        for (Student student : this.students) {
+        for (Student student : this.getStudents()) {
             if (student.getId() == id) {
                 res = student;
                 break;
@@ -289,7 +290,7 @@ public class UniManagementImpl  implements UniManagement {
     public Course getCourseByName(String name) {
         Course res = null;
 
-        for (Course course : this.courses) {
+        for (Course course : this.getCourses()) {
             if (Objects.equals(course.getName(), name)) {
                 res = course;
                 break;
@@ -303,7 +304,7 @@ public class UniManagementImpl  implements UniManagement {
     public Lector getAssistantById(int id) {
         Lector res = null;
 
-        for (Lector assistant : this.assistants) {
+        for (Lector assistant : this.getAssistants()) {
             if (assistant.getId() == id) {
                 res = assistant;
                 break;
@@ -317,7 +318,7 @@ public class UniManagementImpl  implements UniManagement {
     public Lector getLectorById(int id) {
         Lector res = null;
 
-        for (Lector lector : this.lectors) {
+        for (Lector lector : this.getLectors()) {
             if (lector.getId() == id) {
                 res = lector;
                 break;
@@ -325,5 +326,33 @@ public class UniManagementImpl  implements UniManagement {
         }
 
         return res;
+    }
+
+    private Student[] getStudents() {
+        if (this.students == null)
+            return new Student[0];
+
+        return Arrays.copyOfRange(this.students, 0, lastUsedStudentIndex);
+    }
+
+    private Lector[] getLectors() {
+        if (this.lectors == null)
+            return new Lector[0];
+
+        return Arrays.copyOfRange(this.lectors, 0, lastUsedLectorIndex);
+    }
+
+    private Lector[] getAssistants() {
+        if (this.assistants == null)
+            return new Lector[0];
+
+        return Arrays.copyOfRange(this.assistants, 0, lastUsedAssistantIndex);
+    }
+
+    private Course[] getCourses() {
+        if (this.courses == null)
+            return new Course[0];
+
+        return Arrays.copyOfRange(this.courses, 0, lastUsedCourseIndex);
     }
 }

@@ -4,10 +4,10 @@ import beans.LectorType;
 import services.UniManagement;
 
 public class CreateProfessorCommand extends Command {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private LectorType lectorType;
+    private final int id;
+    private final String firstName;
+    private final String lastName;
+    private final LectorType lectorType;
 
     protected CreateProfessorCommand(UniManagement uniManagement, int id, String firstName, String lastName, LectorType lectorType) {
         super(uniManagement);
@@ -18,11 +18,24 @@ public class CreateProfessorCommand extends Command {
     }
 
     public static CreateProfessorCommand create(UniManagement uniManagement, String...args){
+        if (uniManagement == null) {
+            throw new IllegalArgumentException("uniManagement == null");
+        }
+        if (args.length != 5) {
+            throw new IllegalArgumentException("Error: Expected four parameters");
+        }
+
         return new CreateProfessorCommand(uniManagement, Integer.parseInt(args[1]), args[2], args[3], LectorType.valueOf(args[4]));
     }
 
     @Override
     public void execute() {
-        uniManagement.createLector(id, firstName, lastName, lectorType);
+        if (uniManagement.createLector(id, firstName, lastName, lectorType) != null) {
+            System.out.println("Lector student");
+        }
+        else {
+            System.out.println("Lector already exists");
+
+        }
     }
 }

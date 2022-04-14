@@ -7,10 +7,10 @@ import java.util.Arrays;
 
 
 public class Student extends User {
-    public final int MAX_COURSES = 10;
+    public static final int MAX_COURSES = 10;
 
-    private String facNumber;
-    private Course[] courses;
+    private final String facNumber;
+    private final Course[] courses;
     private int lastUsedCourseIndex;
 
     public Student(int id, String firstName, String lastName, String facNumber) {
@@ -22,17 +22,16 @@ public class Student extends User {
 
     public Course[] getCourses() {
         if (this.courses == null)
-            return null;
+            return new Course[0];
 
-        Course[] res =  Arrays.copyOfRange(this.courses, 0, lastUsedCourseIndex);
-        return res;
+        return Arrays.copyOfRange(this.courses, 0, lastUsedCourseIndex);
     }
 
     public boolean addCourse(Course course) throws TooManyCoursesException {
         if (course == null) {
             throw new IllegalArgumentException("parameter course is null");
         }
-        if (this.courses.length == MAX_COURSES) {
+        if (lastUsedCourseIndex == MAX_COURSES) {
             throw new TooManyCoursesException(this);
         }
 
@@ -56,5 +55,4 @@ public class Student extends User {
 
         return res;
     }
-
 }

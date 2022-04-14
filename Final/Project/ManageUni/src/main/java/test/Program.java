@@ -30,14 +30,22 @@ public class Program {
             System.out.println(lineNumber + ". " + line);
 
             String[] args = line.split("\\s");
-            Command command = commandFactory.createCommand(args);
 
-            if (command == null) {
-                System.out.println("Error: command is not correct.");
+            try {
+                Command command = commandFactory.createCommand(args);
+
+                if (command == null) {
+                    System.out.println("Error: command is not correct.");
+                }
+                else {
+                    command.execute();
+                }
             }
-            else {
-                command.execute();
+            catch (Exception ex) {
+                System.out.println(ex);
             }
+
+
         }
     }
 }

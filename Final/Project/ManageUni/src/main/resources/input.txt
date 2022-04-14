@@ -1,3 +1,7 @@
 createCourse java
-createStudent 1 vladimer bagoshvili 22
+createStudent 1 vladimer bagoshvili 221b
 createAssistant 2 assistant assistant
+createProfessor 2 professor professor PROFESSOR
+assignStudentToCourse 1 java
+assignProfessorToCourse 2 java
+createStudent 1 vladimer bagoshvili 221b

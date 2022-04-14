@@ -1,13 +1,15 @@
 package beans;
 
+import com.sun.deploy.panel.IProperty;
+
 import java.util.Objects;
 
 public abstract class User {
-    private int id;
-    private String firstName;
-    private String lastName;
+    protected int id;
+    protected String firstName;
+    protected String lastName;
 
-    public User(int id, String firstName, String lastName) {
+    protected User(int id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

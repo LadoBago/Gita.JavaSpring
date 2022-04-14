@@ -7,7 +7,7 @@ public class CommandFactory {
     private static final String CREATE_COURSE = "createcourse";
     private static final String CREATE_ASSISTANT = "createassistant";
     private static final String CREATE_PROFESSOR = "createprofessor";
-    private static final String ASSIGN_STUDENT_TO_COURSE = "assignstudenttoCourse";
+    private static final String ASSIGN_STUDENT_TO_COURSE = "assignstudenttocourse";
     private static final String ASSIGN_PROFESSOR_TO_COURSE = "assignprofessortocourse";
     private static final String ASSIGN_ASSISTANT_TO_COURSE = "assignassistanttocourse";
     private static final String DELETE_PROFESSOR = "deleteprofessor";
@@ -15,7 +15,6 @@ public class CommandFactory {
     private static final String DELETE_STUDENT = "deletestudent";
     private static final String DELETE_COURSE = "deletecourse";
     private static final String REMOVE_STUDENT_FROM_CURSE = "removestudentfromcourse";
-
 
     private final UniManagement uniManagement;
 

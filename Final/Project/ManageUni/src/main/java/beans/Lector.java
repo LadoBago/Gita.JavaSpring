@@ -7,10 +7,10 @@ import java.util.Arrays;
 
 
 public class Lector extends User {
-    public final int MAX_COURSES = 4;
+    public static final int MAX_COURSES = 4;
 
-    private LectorType lectorType;
-    private Course[] courses;
+    private final LectorType lectorType;
+    private final Course[] courses;
     private int lastUsedCourseIndex;
 
 
@@ -52,10 +52,9 @@ public class Lector extends User {
 
     public Course[] getCourses() {
         if (this.courses == null)
-            return null;
+            return new Course[0];
 
-        Course[] res =  Arrays.copyOfRange(this.courses, 0, lastUsedCourseIndex);
-        return res;
+        return Arrays.copyOfRange(this.courses, 0, lastUsedCourseIndex);
     }
 
 }

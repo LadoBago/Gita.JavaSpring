@@ -5,8 +5,8 @@ import beans.Student;
 import services.UniManagement;
 
 public class AssignStudentToCourseCommand extends Command {
-    private int id;
-    private String courseName;
+    private final int id;
+    private final String courseName;
 
     protected AssignStudentToCourseCommand(UniManagement uniManagement, int id, String courseName) {
         super(uniManagement);
@@ -15,6 +15,13 @@ public class AssignStudentToCourseCommand extends Command {
     }
 
     public static AssignStudentToCourseCommand create(UniManagement uniManagement, String...args) {
+        if (uniManagement == null) {
+            throw new IllegalArgumentException("uniManagement == null");
+        }
+        if (args.length != 3) {
+            throw new IllegalArgumentException("Error: Expected two parameters");
+        }
+
         return new AssignStudentToCourseCommand(uniManagement, Integer.parseInt(args[1]), args[2]);
     }
 

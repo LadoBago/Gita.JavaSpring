@@ -5,8 +5,8 @@ import beans.Lector;
 import services.UniManagement;
 
 public class AssignAssistantToCourseCommand extends Command {
-    private int id;
-    private String courseName;
+    private final int id;
+    private final String courseName;
 
     protected AssignAssistantToCourseCommand(UniManagement uniManagement, int id, String courseName) {
         super(uniManagement);
@@ -15,6 +15,13 @@ public class AssignAssistantToCourseCommand extends Command {
     }
 
     public static AssignAssistantToCourseCommand create(UniManagement uniManagement, String...args) {
+        if (uniManagement == null) {
+            throw new IllegalArgumentException("uniManagement == null");
+        }
+        if (args.length != 3) {
+            throw new IllegalArgumentException("Error: Expected two parameters");
+        }
+
         return new AssignAssistantToCourseCommand(uniManagement, Integer.parseInt(args[1]), args[2]);
     }
 
