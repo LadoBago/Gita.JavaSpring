@@ -1,7 +1,69 @@
 createCourse java
-createStudent 1 vladimer bagoshvili 221b
-createAssistant 2 assistant assistant
-createProfessor 2 professor professor PROFESSOR
+createCourse python
+createCourse c#
+createCourse java
+createCourse golang
+createCourse c++
+createCourse pascal
+
+createStudent 1 Garry Kasparov 221b
+createStudent 2 Anatoly Karpov 197c
+createStudent 3 Mikhail Botvinnik 089a
+createStudent 1 Garry Kasparov 221b
+
+createAssistant 1 Mikhail Tal
+createAssistant 2 Boris Spassky
+
+createProfessor 1 Magnus Carlsen DOCENT
+createProfessor 1 Bobby Fischer DOCENT
+createProfessor 2 Jose-Raul Capablanca PROFESSOR
+createProfessor 3 Paul Morphy PROFESSOR
+
 assignStudentToCourse 1 java
+assignStudentToCourse 2 python
+assignStudentToCourse 3 java
+assignStudentToCourse 1 c#
+assignStudentToCourse 2 java
+assignStudentToCourse 3 c#
+assignStudentToCourse 1 java
+assignStudentToCourse 1 golang
+assignStudentToCourse 2 c++
+assignStudentToCourse 3 pascal
+assignStudentToCourse 2 ruby
+assignStudentToCourse 3 c++
+
+
+assignAssistantToCourse 1 java
+assignAssistantToCourse 1 python
+assignAssistantToCourse 2 c#
+assignAssistantToCourse 2 java11
+assignAssistantToCourse 3 java
+
 assignProfessorToCourse 2 java
-createStudent 1 vladimer bagoshvili 221b
+assignProfessorToCourse 1 python
+assignProfessorToCourse 3 C#
+assignProfessorToCourse 3 java
+assignProfessorToCourse 2 c#
+assignProfessorToCourse 2 golang
+assignProfessorToCourse 2 c++
+assignProfessorToCourse 2 pascal
+assignProfessorToCourse 2 python
+
+removeStudentFromCourse 1 java
+removeStudentFromCourse 1 pascal
+removeStudentFromCourse 3 c#
+removeStudentFromCourse 2 c++
+
+deleteStudent 1
+deleteStudent 2
+
+deleteCourse golang
+deleteCourse pascal
+
+deleteAssistant 1
+deleteAssistant 3
+
+deleteProfessor 1
+deleteProfessor 2
+deleteProfessor 8
+

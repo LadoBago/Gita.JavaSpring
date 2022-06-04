@@ -2,15 +2,15 @@ package test.commands;
 
 import services.UniManagement;
 
-public class DeleteAssistantCommand extends Command {
+public class DeleteStudentCommand extends Command {
     private final int id;
 
-    protected DeleteAssistantCommand(UniManagement uniManagement, int id) {
+    protected DeleteStudentCommand(UniManagement uniManagement, int id) {
         super(uniManagement);
         this.id = id;
     }
 
-    public static DeleteAssistantCommand create(UniManagement uniManagement, String...args){
+    public static DeleteStudentCommand create(UniManagement uniManagement, String...args){
         if (uniManagement == null) {
             throw new IllegalArgumentException("uniManagement == null");
         }
@@ -18,12 +18,12 @@ public class DeleteAssistantCommand extends Command {
             throw new IllegalArgumentException("Error: Expected one parameter");
         }
 
-        return new DeleteAssistantCommand(uniManagement, Integer.parseInt(args[1]));
+        return new DeleteStudentCommand(uniManagement, Integer.parseInt(args[1]));
     }
 
     @Override
     public void execute() {
-        if (uniManagement.deleteAssistant(id)) {
+        if (uniManagement.deleteStudent(id)) {
             System.out.println("Deleted");
         }
         else {
